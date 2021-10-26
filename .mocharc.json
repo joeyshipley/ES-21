@@ -1,0 +1,7 @@
+{
+  "spec": "./tests/**/*.specs.js",
+  "experimental-specifier-resolution": "node",
+  "exit": true,
+  "bail": true,
+  "timeout": 1000
+}
