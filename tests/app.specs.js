@@ -63,5 +63,21 @@ describe(`App tests`, () => {
       // Assert
       should.not.exist(result);
     });
+
+    it(`A non-existant request returns null also`, async () => {
+      // Act
+      const result = app.start();
+
+      // Assert
+      should.not.exist(result);
+    });
+
+    it(`A non-string request returns null also`, async () => {
+      // Act
+      const result = app.start({ nope: 'NOPE!' });
+
+      // Assert
+      should.not.exist(result);
+    });
   });
 });

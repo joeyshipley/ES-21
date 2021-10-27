@@ -3,7 +3,13 @@ export default {
 }
 
 function start(request) {
+  if(!isValidRequest(request)) { return null; }
+
   return removeNonDigitValuesFrom(request);
+}
+
+function isValidRequest(request) {
+  return !(!request || typeof request != 'string');
 }
 
 function removeNonDigitValuesFrom(requestValue) {
