@@ -16,6 +16,30 @@ describe(`InputParser`, () => {
   });
 
   describe('When scrubbing input values to remove unwanted values', () => {
+    it(`A completely invalid input returns null instead of empty`, async () => {
+      // Act
+      const result = inputParser.removeInvalid('*&^%$#@!abdcDEF[]{};",.<>-+=_?');
+
+      // Assert
+      should.not.exist(result);
+    });
+
+    it(`A non-existant request returns null also`, async () => {
+      // Act
+      const result = inputParser.removeInvalid();
+
+      // Assert
+      should.not.exist(result);
+    });
+
+    it(`A non-string request returns null also`, async () => {
+      // Act
+      const result = inputParser.removeInvalid({ nope: 'NOPE!' });
+
+      // Assert
+      should.not.exist(result);
+    });
+
     it(`It removes non-digit values like '-'`, async () => {
       // Act
       const result = inputParser.removeInvalid('7-623');
@@ -54,30 +78,6 @@ describe(`InputParser`, () => {
 
       // Assert
       result.should.equal('12345');
-    });
-
-    it(`A completely invalid input returns null instead of empty`, async () => {
-      // Act
-      const result = inputParser.removeInvalid('*&^%$#@!abdcDEF[]{};",.<>-+=_?');
-
-      // Assert
-      should.not.exist(result);
-    });
-
-    it(`A non-existant request returns null also`, async () => {
-      // Act
-      const result = inputParser.removeInvalid();
-
-      // Assert
-      should.not.exist(result);
-    });
-
-    it(`A non-string request returns null also`, async () => {
-      // Act
-      const result = inputParser.removeInvalid({ nope: 'NOPE!' });
-
-      // Assert
-      should.not.exist(result);
     });
   });
 });
