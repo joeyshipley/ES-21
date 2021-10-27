@@ -1,4 +1,4 @@
-import kata from './kata';
+import app from './app';
 
-const result = kata.start();
+const result = app.start();
 console.log(result);
